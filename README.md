@@ -1,13 +1,19 @@
-# DATA1700---OBLIG1
-Oblig 1: Bestilling av kinobilletter (kun på klient)
-Det skal lages en JavaScript-applikasjon som registrerer kjøp av kinobilletter. Det er kun tre filer som du selv skal skrive eller redigere: En HTML-fil, en JavaScript-fil og en README.md-fil. Du skal likevel levere et komplett prosjekt hvor disse tre filene ligger på riktig sted i mappe- og filstrukturen (altså HTML- og JavaScript-filer under "<prosjektnavn>\src\main\resources\static" og README.md i rotkatalogen). README.md-filen hentes fra repo og fylles ut.
+DATA1700 - OBLIG1: Bestilling av kinobilletter
+Dette prosjektet er en JavaScript-applikasjon som lar brukere registrere kjøp av kinobilletter. Oppgaven krever implementering av funksjonalitet kun på klientens side ved hjelp av HTML ogJavaScript
 
+Funksjonalitetskrav
+Registrering av kinobilletter: Brukere skal kunne fylle ut et skjema med informasjon om film, antall billetter, fornavn, etternavn, telefonnummer og e-postadresse. Etter at skjemaet er sendt inn, skal billettinformasjonen lagres som et objekt i et array.
 
-Etter at knappen "Kjøp billett" er trykket skal billetten lagres som et objekt i et array. Deretter skal arrayet listes ut under "Alle billetter". Etter det er registrert en bestilling skal alle inputfelt "blankes" slik at en ny billett kan registreres.
+Visning av alle billetter: Alle registrerte billetter skal vises på skjermen.
 
-Knappen "Slett alle billettene" skal slette alle billettene (tømme arrayet).
+Tilbakestilling av skjema: Etter at en bestilling er registrert, skal alle inputfelt tømmes slik at brukeren kan registrere en ny billett.
 
-Det skal også lages en input-validering som sjekker at alle inputfeltene inneholder noe. 
+Sletting av alle billetter: Det skal være mulig å slette alle registrerte billetter.
 
-!! Jeg forventer forskjellige inputvalideringer for hver type felt. Eksempel: Hvis det er et telefonnummer, oppretter du en tilpasset validering for telefonnummeret. Hvis det er en e-postadresse, oppretter du en tilpasset validering for en e-postadresse. Du har en utskriftsskjerm nedenfor med eksempel for e-postvalidering.
+Inputvalidering: Det skal implementeres inputvalidering for å sikre at alle inputfelt er fylt ut riktig. Dette inkluderer tilpasset validering for forskjellige typer felt, som telefonnummer og e-postadresse.
 
+Struktur
+Prosjektet skal inneholde følgende filer:
+
+index.html: HTML-filen som inneholder skjemaet for billettbestilling og visning av billetter.
+script.js: JavaScript-filen som inneholder logikken for billettregistrering, visning og sletting.
