@@ -17,3 +17,4 @@ Prosjektet skal inneholde følgende filer:
 
 index.html: HTML-filen som inneholder skjemaet for billettbestilling og visning av billetter.
 script.js: JavaScript-filen som inneholder logikken for billettregistrering, visning og sletting.
+
