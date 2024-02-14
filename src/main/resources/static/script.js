@@ -14,7 +14,7 @@ bilettskjema.addEventListener('submit',function (event){
     const epost = document.getElementById('epost').value;
 
     if (film === "" || antall === "" || fornavn==="" || etternavn==="" || telefonnr==="" || epost==="") {
-        alert("Fyll ut alle feltene");
+        alert("Fyll ut alle av feltene");
         return;
     }
 
