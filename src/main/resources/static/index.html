@@ -4,41 +4,57 @@
     <meta charset="UTF-8">
     <title>Bestilling av kinobiletter</title>
 </head>
-<body style="background-color:powderblue;">
+<body style="background-color: lightsteelblue;">
+
 
 <h1>Bestilling av kinobiletter</h1>
 <form id="bilettskjema">
-    <label for="film">Film:</label>
-    <select id="film" required>
-        <option value="">Velg Film</option>
-        <option value="film1">Film-1</option>
-        <option value="film2">Film-2</option>
-        <option value="film3">Film-3</option>
-    </select><br><br>
+    <table>
+        <tr>
+            <td>Film:</td>
+            <td>
+                <select id="film" required>
+                    <option value="">Velg Film</option>
+                    <option value="Nemo">Nemo</option>
+                    <option value="Toy Story">Toy Story</option>
+                    <option value="Kungfu Panda">Kungfu Panda</option>
+                </select>
+            </td>
+        </tr>
 
-    <label for="antall">Antall biletter:</label>
-    <input type="number" id="antall" required><br><br>
+        <tr>
+            <td>Antall:</td>
+            <td><input type="number" id="antall" required></td>
+        </tr>
+        <tr>
+            <td>Fornavn:</td>
+            <td><input type="text" id="fornavn" required></td>
+        </tr>
 
-    <label for="fornavn">Fornavn:</label>
-    <input type="text" id="fornavn" required><br><br>
+        <tr>
+            <td>Etternavn:</td>
+            <td><input type="text" id="etternavn" required></td>
+        </tr>
 
-    <label for="etternavn">Etternavn:</label>
-    <input type="text" id="etternavn" required><br><br>
+        <tr>
+            <td>Telefonnummer:</td>
+            <td><input type="number" id="telefonnummer" pattern="[0-9]{8}"></td>
+        </tr>
 
-    <label for="telefonnr">Telefonnummer:</label>
-    <input type="tel" id="telefonnr" pattern="[0-9]{8}" required><br><br>
-
-    <label for="epost">Epost:</label>
-    <input type="email" id="epost" required><br>
+        <tr>
+            <td>Epostadresse:</td>
+            <td><input type="email" id="epostadresse" required></td>
+        </tr>
+    </table>
 
     <button type="submit">Kjøp bilett</button>
+
 </form>
 
-<h2>Alle biletter</h2>
+<h2>Alle biletter registert</h2>
 <ul id="bilettliste"></ul>
 
 <button onclick="slettallebiletter()">Slett alle biletter</button>
-
 <script src="script.js"></script>
 </body>
 </html>

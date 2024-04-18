@@ -10,20 +10,20 @@ bilettskjema.addEventListener('submit',function (event){
     const antall = document.getElementById('antall').value;
     const fornavn = document.getElementById('fornavn').value;
     const etternavn = document.getElementById('etternavn').value;
-    const telefonnr = document.getElementById('telefonnr').value;
-    const epost = document.getElementById('epost').value;
+    const telefonnummer = document.getElementById('telefonnummer').value;
+    const epostadresse = document.getElementById('epostadresse').value;
 
-    if (film === "" || antall === "" || fornavn==="" || etternavn==="" || telefonnr==="" || epost==="") {
+    if (film === "" || antall === "" || fornavn==="" || etternavn==="" || telefonnummer==="" || epostadresse==="") {
         alert("Fyll ut alle av feltene");
         return;
     }
 
-    if (!validateepost(epost)){
-        alert("Skriv inn gyldig epost");
+    if (!validateepostadresse(epostadresse)){
+        alert("Skriv inn gyldig epostadresse");
         return;
     }
 
-    if (!validatetelefonnr(telefonnr)){
+    if (!validatetelefonnummer(telefonnummer)){
         alert("Skriv inn gyldig telefonnummer med 8 sifre");
         return;
     }
@@ -33,8 +33,8 @@ bilettskjema.addEventListener('submit',function (event){
         antall:antall,
         fornavn:fornavn,
         etternavn:etternavn,
-        telefonnr:telefonnr,
-        epost:epost,
+        telefonnummer:telefonnummer,
+        epostadresse:epostadresse,
     };
 
     biletter.push(bilett);
@@ -48,7 +48,7 @@ function displaybiletter() {
     bilettliste.innerHTML = '';
     biletter.forEach(function(bilett, index) {
         const li = document.createElement('li');
-        li.textContent = `Billett ${index + 1}: -Navn: ${bilett.fornavn} ${bilett.etternavn} - Film: ${bilett.film}, Antall: ${bilett.antall}, Telefon: ${bilett.telefonnr}, E-post: ${bilett.epost}`;
+        li.textContent = `Billett ${index + 1}: -Navn: ${bilett.fornavn} ${bilett.etternavn} - Film: ${bilett.film}, Antall: ${bilett.antall}, Telefon: ${bilett.telefonnummer}, E-post: ${bilett.epostadresse}`;
         bilettliste.appendChild(li);
     });
 }
@@ -58,12 +58,12 @@ function slettallebiletter() {
     displaybiletter();
 }
 
-function validateepost(epost) {
+function validateepostadresse(epostadresse) {
     const re = /\S+@\S+\.\S+/;
-    return re.test(epost);
+    return re.test(epostadresse);
 }
 
-function validatetelefonnr(telefonnr) {
+function validatetelefonnummer(telefonnummer) {
     const re = /^\d{8}$/;
-    return re.test(telefonnr);
+    return re.test(telefonnummer);
 }
