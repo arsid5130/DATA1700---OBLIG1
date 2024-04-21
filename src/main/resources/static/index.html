@@ -3,58 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <title>Bestilling av kinobiletter</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 </head>
 <body style="background-color: lightsteelblue;">
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <h1 class="text-center">Bestilling av kinobiletter</h1>
+            <form id="bilettskjema">
+                <div class="form-group">
+                    <label for="film">Film:</label>
+                    <select class="form-control" id="film" required>
+                        <option value="">Velg Film</option>
+                        <option value="Nemo">Nemo</option>
+                        <option value="Toy Story">Toy Story</option>
+                        <option value="Kungfu Panda">Kungfu Panda</option>
+                    </select>
+                </div>
 
+                <div class="form-group">
+                    <label for="antall">Antall:</label>
+                    <input type="number" class="form-control" id="antall" required>
+                </div>
 
-<h1>Bestilling av kinobiletter</h1>
-<form id="bilettskjema">
-    <table>
-        <tr>
-            <td>Film:</td>
-            <td>
-                <select id="film" required>
-                    <option value="">Velg Film</option>
-                    <option value="Nemo">Nemo</option>
-                    <option value="Toy Story">Toy Story</option>
-                    <option value="Kungfu Panda">Kungfu Panda</option>
-                </select>
-            </td>
-        </tr>
+                <div class="form-group">
+                    <label for="fornavn">Fornavn:</label>
+                    <input type="text" class="form-control" id="fornavn" required>
+                </div>
 
-        <tr>
-            <td>Antall:</td>
-            <td><input type="number" id="antall" required></td>
-        </tr>
-        <tr>
-            <td>Fornavn:</td>
-            <td><input type="text" id="fornavn" required></td>
-        </tr>
+                <div class="form-group">
+                    <label for="etternavn">Etternavn:</label>
+                    <input type="text" class="form-control" id="etternavn" required>
+                </div>
 
-        <tr>
-            <td>Etternavn:</td>
-            <td><input type="text" id="etternavn" required></td>
-        </tr>
+                <div class="form-group">
+                    <label for="telefonnummer">Telefonnummer:</label>
+                    <input type="number" class="form-control" id="telefonnummer" pattern="[0-9]{8}">
+                </div>
 
-        <tr>
-            <td>Telefonnummer:</td>
-            <td><input type="number" id="telefonnummer" pattern="[0-9]{8}"></td>
-        </tr>
+                <div class="form-group">
+                    <label for="epostadresse">Epostadresse:</label>
+                    <input type="email" class="form-control" id="epostadresse" required>
+                </div>
 
-        <tr>
-            <td>Epostadresse:</td>
-            <td><input type="email" id="epostadresse" required></td>
-        </tr>
-    </table>
+                <button class="btn btn-primary btn-block" type="submit">Kjøp billett</button>
+            </form>
 
-    <button type="submit">Kjøp bilett</button>
+            <h2 class="text-center">Alle billetter registrert</h2>
+            <ul id="bilettliste" class="list-group"></ul>
 
-</form>
+            <button class="btn btn-danger btn-block" onclick="slettallebiletter()">Slett alle billetter</button>
+        </div>
+    </div>
+</div>
 
-<h2>Alle biletter registert</h2>
-<ul id="bilettliste"></ul>
-
-<button onclick="slettallebiletter()">Slett alle biletter</button>
 <script src="script.js"></script>
 </body>
 </html>

@@ -48,10 +48,18 @@ function displaybiletter() {
     bilettliste.innerHTML = '';
     biletter.forEach(function(bilett, index) {
         const li = document.createElement('li');
-        li.textContent = `Billett ${index + 1}: -Navn: ${bilett.fornavn} ${bilett.etternavn} - Film: ${bilett.film}, Antall: ${bilett.antall}, Telefon: ${bilett.telefonnummer}, E-post: ${bilett.epostadresse}`;
+        li.classList.add('list-group-item'); // Legg til Bootstrap-klassen
+        li.innerHTML = `
+            <p><strong>Navn:</strong> ${bilett.fornavn} ${bilett.etternavn}</p>
+            <p><strong>Film:</strong> ${bilett.film}</p>
+            <p><strong>Antall:</strong> ${bilett.antall}</p>
+            <p><strong>Telefon:</strong> ${bilett.telefonnummer}</p>
+            <p><strong>E-post:</strong> ${bilett.epostadresse}</p>
+        `;
         bilettliste.appendChild(li);
     });
 }
+
 
 function slettallebiletter() {
     biletter.length = 0;
