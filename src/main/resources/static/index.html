@@ -1,62 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/2.3.1/css/bootstrap.min.css">
+
+
 <head>
     <meta charset="UTF-8">
-    <title>Bestilling av kinobiletter</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <title>Billetter</title>
+
 </head>
-<body style="background-color: lightsteelblue;">
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <h1 class="text-center">Bestilling av kinobiletter</h1>
-            <form id="bilettskjema">
-                <div class="form-group">
-                    <label for="film">Film:</label>
-                    <select class="form-control" id="film" required>
-                        <option value="">Velg Film</option>
-                        <option value="Nemo">Nemo</option>
-                        <option value="Toy Story">Toy Story</option>
-                        <option value="Kungfu Panda">Kungfu Panda</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="antall">Antall:</label>
-                    <input type="number" class="form-control" id="antall" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="fornavn">Fornavn:</label>
-                    <input type="text" class="form-control" id="fornavn" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="etternavn">Etternavn:</label>
-                    <input type="text" class="form-control" id="etternavn" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="telefonnummer">Telefonnummer:</label>
-                    <input type="number" class="form-control" id="telefonnummer" pattern="[0-9]{8}">
-                </div>
-
-                <div class="form-group">
-                    <label for="epostadresse">Epostadresse:</label>
-                    <input type="email" class="form-control" id="epostadresse" required>
-                </div>
-
-                <button class="btn btn-primary btn-block" type="submit">Kjøp billett</button>
-            </form>
-
-            <h2 class="text-center">Alle billetter registrert</h2>
-            <ul id="bilettliste" class="list-group"></ul>
-
-            <button class="btn btn-danger btn-block" onclick="slettallebiletter()">Slett alle billetter</button>
-        </div>
+<h1>Registrer Billett For Ønsket Film</h1>
+<form class="form">
+    <div class="form-group">
+        <label>Film</label>
+        <select class="form-control" id="film" required>
+            <option value="">Velg Film</option>
+            <option value="Nemo">Nemo</option>
+            <option value="Toy Story">Toy Story</option>
+            <option value="Kungfu Panda">Kungfu Panda</option>
+        </select>
     </div>
-</div>
+    <div class="form-group">
+        <label>Antall</label>
+        <input type="number" id="antall"/>
+    </div>
+    <div class="form-group">
+        <label>Fornavn</label>
+        <input type="text" id="fornavn"/>
+    </div>
+    <div class="form-group">
+        <label>etternavn</label>
+        <input type="text" id="etternavn"/>
+    </div>
+    <div class="form-group">
+        <label>Telefonnummer</label>
+        <input type="number" id="telefonnummer"/>
+    </div>
+    <div class="form-group">
+        <label>Epostadresse</label>
+        <input type="text" id="epostadresse"/>
+    </div>
+</form>
 
+<button class="btn btn-primary" onclick="regbillett()">Registrer</button><br/>
+<h3>Alle Billettene:</h3>
+<div id="billettene"></div>
+<button class="btn btn-danger" onclick="slettbillettene()">Slett alle kunder</button>
 <script src="script.js"></script>
 </body>
 </html>

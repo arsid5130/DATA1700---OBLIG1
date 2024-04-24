@@ -1,70 +1,75 @@
-const bilettskjema = document.getElementById('bilettskjema');
-const bilettliste = document.getElementById('bilettliste');
+$(function() {
+    hentAlle();
+});
 
-const biletter = [];
+function regbillett() {
+    const film = $("#film").val();
+    const antall = $("#antall").val();
+    const fornavn = $("#fornavn").val();
+    const etternavn = $("#etternavn").val();
+    const telefonnummer = $("#telefonnummer").val();
+    const epostadresse = $("#epostadresse").val();
 
-bilettskjema.addEventListener('submit',function (event){
-    event.preventDefault();
-
-    const film = document.getElementById('film').value;
-    const antall = document.getElementById('antall').value;
-    const fornavn = document.getElementById('fornavn').value;
-    const etternavn = document.getElementById('etternavn').value;
-    const telefonnummer = document.getElementById('telefonnummer').value;
-    const epostadresse = document.getElementById('epostadresse').value;
-
-    if (film === "" || antall === "" || fornavn==="" || etternavn==="" || telefonnummer==="" || epostadresse==="") {
+    if (film === "" || antall === "" || fornavn === "" || etternavn === "" || telefonnummer === "" || epostadresse === "") {
         alert("Fyll ut alle av feltene");
         return;
     }
 
-    if (!validateepostadresse(epostadresse)){
+    if (!validateepostadresse(epostadresse)) {
         alert("Skriv inn gyldig epostadresse");
         return;
     }
 
-    if (!validatetelefonnummer(telefonnummer)){
+    if (!validatetelefonnummer(telefonnummer)) {
         alert("Skriv inn gyldig telefonnummer med 8 sifre");
         return;
     }
 
-    const bilett={
-        film:film,
-        antall:antall,
-        fornavn:fornavn,
-        etternavn:etternavn,
-        telefonnummer:telefonnummer,
-        epostadresse:epostadresse,
+    const billett = {
+        film: film,
+        antall: antall,
+        fornavn: fornavn,
+        etternavn: etternavn,
+        telefonnummer: telefonnummer,
+        epostadresse: epostadresse
     };
 
-    biletter.push(bilett);
-    displaybiletter();
-    bilettskjema.reset();
-
-});
-
-
-function displaybiletter() {
-    bilettliste.innerHTML = '';
-    biletter.forEach(function(bilett, index) {
-        const li = document.createElement('li');
-        li.classList.add('list-group-item'); // Legg til Bootstrap-klassen
-        li.innerHTML = `
-            <p><strong>Navn:</strong> ${bilett.fornavn} ${bilett.etternavn}</p>
-            <p><strong>Film:</strong> ${bilett.film}</p>
-            <p><strong>Antall:</strong> ${bilett.antall}</p>
-            <p><strong>Telefon:</strong> ${bilett.telefonnummer}</p>
-            <p><strong>E-post:</strong> ${bilett.epostadresse}</p>
-        `;
-        bilettliste.appendChild(li);
+    const url = "/lagre";
+    $.post(url, billett, function(resultat) {
+        hentAlle();
     });
+
+    // Tøm input-feltene
+    $("#film").val("");
+    $("#antall").val("");
+    $("#fornavn").val("");
+    $("#etternavn").val("");
+    $("#telefonnummer").val("");
+    $("#epostadresse").val("");
+};
+
+function hentAlle() {
+    $.get("/hentAlle", function(data) {
+        formaterData(data);
+    });
+};
+
+function formaterData(billetter) {
+    var ut = "<table class='table table-striped'>" +
+        "<tr>" +
+        "<th>Film</th><th>Antall</th><th>Fornavn</th><th>Etternavn</th><th>Telefonnummer</th><th>Epostadresse</th>" +
+        "</tr>";
+    for (let i in billetter) {
+        ut += "<tr><td>" + billetter[i].film + "</td><td>" + billetter[i].antall + "</td><td>" + billetter[i].fornavn + "</td><td>" + billetter[i].etternavn + "</td><td>" + billetter[i].telefonnummer + "</td><td>" + billetter[i].epostadresse + "</td></tr>"
+    }
+    $("#billettene").html(ut);
 }
 
-
-function slettallebiletter() {
-    biletter.length = 0;
-    displaybiletter();
-}
+function slettbillettene() {
+    $.get("/slettAlle", function(data) {
+        hentAlle();
+    });
+};
 
 function validateepostadresse(epostadresse) {
     const re = /\S+@\S+\.\S+/;
